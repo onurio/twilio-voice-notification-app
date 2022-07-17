@@ -16,6 +16,7 @@ module.exports = class NgrokConfigPlugin {
           ngrok.connect({
             addr: 3000,
             host_header: 3000,
+            authtoken: process.env.NGROK_AUTH,
           }).then(url => {
             const configManager = new ConfigManager();
             const applicationUrl = `${url}/?passcode=${configManager.PASSCODE}`;
